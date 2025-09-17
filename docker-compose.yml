@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: hardware-postgres
+    restart: unless-stopped
+    env_file:
+      - .env.database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - hardware-network
+
+  server:
+    image: zamcv/hd-server:v0.0.1
+    container_name: hardware-server
+    restart: unless-stopped
+    env_file:
+      - .env.server
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    networks:
+      - hardware-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  hardware-network:
+    driver: bridge

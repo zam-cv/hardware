@@ -1,0 +1,7 @@
+{
+  "cmake.configureOnOpen": false,
+  "cmake.automaticReconfigure": false,
+  "cmake.configureOnEdit": false,
+  "C_Cpp.default.configurationProvider": "ms-vscode.cpptools",
+  "C_Cpp.intelliSenseEngine": "default"
+}
